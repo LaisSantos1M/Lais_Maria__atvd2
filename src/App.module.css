@@ -26,7 +26,7 @@
 .s1 p {
     font-size: 30px;
     width: 500px;
-    margin-top: -200px;
+    margin-top: 20px;
     text-align: left;
 
 }
@@ -172,6 +172,8 @@
         flex-wrap: wrap;
     }
 
+    
+
     .s1 {
         padding-top: 280px;
         height: auto;
@@ -187,9 +189,9 @@
 
     .s4{
         width: 95%;
-        
-
     }
+
+
 
 
 }

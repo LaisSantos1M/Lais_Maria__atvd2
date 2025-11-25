@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import style from "./App.module.css";
-import foto from "/foto.png"
+import foto from "/foto.png";
 
 function App() {
   // const [dados, setDados] = useState([]);
@@ -69,7 +69,7 @@ function App() {
 
       <section className={style.s3} id="s3">
         <div>
-          <h2>igualdade</h2>
+          <h2>Igualdade</h2>
           <p>
             "À igualdade" refere-se ao princípio de tratar todos de forma igual
             perante a lei e a sociedade, garantindo os mesmos direitos e
@@ -135,13 +135,8 @@ function App() {
         </div>
 
         <div>
-           <img
-              className={style.img}
-              src={foto}
-              alt="Representação"
-            />
+          <img className={style.img} src={foto} alt="Representação" />
         </div>
-
       </section>
       <section className={style.s5} id="s5">
         <div>
@@ -167,15 +162,17 @@ function App() {
         <div>
           <h2>Direitos Humanos</h2>
           <p>
-            A relação entre direitos humanos e educação se manifesta de duas
-            formas principais: a educação como um direito humano fundamental e a
-            educação em direitos humanos. O primeiro é a garantia do acesso à
-            instrução para todos, enquanto o segundo se refere à educação que
-            promove o respeito à dignidade e às liberdades de todas as pessoas.
-            A educação em direitos humanos busca uma mudança cultural, focada no
-            desenvolvimento de valores éticos, tolerância e cidadania ativa.
-            <br />
-            O direito humano à educação foi criado e reconhecido
+            O direito humano à educação é um direito fundamental previsto em
+            artigos internacionais, como o Artigo 26 da Declaração Universal dos
+            Direitos Humanos, e na legislação brasileira, como o Artigo 205 da
+            Constituição Federal. Este artigo afirma que a educação é um direito
+            de todos e um dever do Estado e da família, com o objetivo de
+            promover o pleno desenvolvimento da pessoa e a cidadania. A educação
+            em direitos humanos (EDH) é entendida como uma forma de garantir e
+            consolidar esse direito, promovendo uma cultura de respeito,
+            igualdade e dignidade humana, conforme estabelecido em marcos como a
+            BNCC e o Plano Nacional de Educação em Direitos Humanos.
+            <br />O direito humano à educação foi criado e reconhecido
             internacionalmente no contexto do pós-Segunda Guerra Mundial, a
             partir de um esforço da Organização das Nações Unidas (ONU) para
             promover a paz, reduzir desigualdades e prevenir futuras
