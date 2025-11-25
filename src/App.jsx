@@ -1,185 +1,192 @@
-// import { useState } from "react";
 import style from "./App.module.css";
-import foto from "/foto.png";
+
+import fotoPerfil from "/eu.jpg";
+import FacebookIcon from "/face.avif";
+import InstagramIcon from "/insta.jpg";
+import linkedinIcon from "/like.avif";
+import whastsappIcon from "/what.avif";
+
+
+import { Card } from "./components/card";
+
+import { useState, useEffect } from "react";
 
 function App() {
-  // const [dados, setDados] = useState([]);
+  //Javascript
+  const [dados,setDados] = useState([])
+
+useEffect(() =>{
+    fetch('/cardsInfo.json')
+    .then(response => response.json())
+    .then(data =>{
+      setDados(data)
+    })
+}, [])
+
+  const defaultPhoneNumber = "5541999200982";
+
+  const [formData, setFormData] = useState({
+    name: " ",
+    email: " ",
+    message: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleZap = () => {
+    const { name, email, message } = formData;
+
+    const urlZap = `https://api.whatsapp.com/send?phone=${defaultPhoneNumber}&text= 
+    Nome:%20${name}
+    Email:$%20${email}
+    Mensagem:$%20${message}`;
+
+    window.open(urlZap, "_blank");
+  };
 
   return (
     <>
       <nav className={style.menu}>
         <a href="#s1">Home</a>
-        <a href="#s2">𝐕𝐢𝐝𝐚 𝐞 𝐋𝐢𝐛𝐞𝐫𝐝𝐚𝐝𝐞</a>
-        <a href="#s3">𝐈𝐠𝐮𝐚𝐥𝐝𝐚𝐝𝐞 𝐞 𝐒𝐞𝐠𝐮𝐫𝐚𝐧ç𝐚</a>
-        <a href="#s4">𝐋𝐢𝐛𝐞𝐫𝐝𝐚𝐝𝐞 𝐝𝐞 𝐞𝐱𝐩𝐫𝐞𝐬𝐬ã𝐨</a>
-        <a href="#s5">𝐓𝐫𝐚𝐛𝐚𝐥𝐡𝐨 𝐞 𝐄𝐝𝐮𝐜𝐚çã𝐨</a>
+        <a href="#s2">Cards</a>
+        <a href="#s3">xx</a>
+        <a href="#s5">Praias</a>
+        <a href="#s4">Contato</a>
       </nav>
+      <main>
+        <section className={style.s1} id="s1">
+          <div className={style.left}>
+            <img
+              className={style.imgPerfil}
+              src={fotoPerfil}
+              alt="Foto perfil"
+            />
+          </div>
+          <div className={style.right}>
+            <h2>Lais Cristina</h2>
+            <p>
+              Estudante do 1 ano do ensino medio, faço curso no instituto forja.{" "}
+            </p>
+          </div>
+        </section>
 
-      <section className={style.s1} id="s1">
-        <h2 className={style.tecTitle}>Direitos Humanos</h2>
-        <p>
-          São garantias fundamentais inerentes a todos os seres humanos, que
-          visam assegurar que vivam com dignidade, liberdade, igualdade e
-          justiça.Esses diretos vem do artigo 5 da Constituição Federal de 1988.
-        </p>
-      </section>
+        <section className={style.s2} id="s2">
+          <h2 className={style.tecTitle}>TECNOLOGIAS</h2>
+          <div className={style.wrapCards}>
+            {dados.map((item) => {
+              return(
+                <div key={item.id}>
+                <Card tec={item.tecnologia} image={item.imagem} text={item.texto}/>
+                </div>
+              )
+            })}
+          
+          </div>
+        </section>
 
-      <section className={style.s2} id="s2">
-        <div>
-          <h2>Direito a Vida</h2>
-          <p>
-            O direito à vida é o direito fundamental de um indivíduo existir e
-            ter uma vida digna, protegido pela Constituição Federal brasileira.
-            Ele abrange não apenas a sobrevivência física, mas também a
-            integridade física e moral, o direito de nascer e de ter acesso a
-            condições mínimas para uma existência digna, como alimentação,
-            moradia e saúde.
-            <br />
-            POR QUE FOI CRIADO o direito à vida foi "criado" (ou reconhecido e
-            formalizado legalmente) para estabelecer a base da convivência
-            humana, garantindo a existência física e uma vida digna a todos os
-            indivíduos, protegendo-os de ações arbitrárias, sejam elas de outros
-            indivíduos ou do próprio Estado.
-          </p>
-        </div>
-        <div>
-          <h2>Direito à Liberdade</h2>
-          <p>
-            "À liberdade" pode se referir a um conceito filosófico e jurídico
-            amplo, que engloba a autonomia individual e a ausência de coação. É
-            também um direito fundamental em diversas constituições, que garante
-            a liberdade de expressão, de locomoção, de pensamento, de crença e
-            de reunião, entre outras. A liberdade é limitada apenas pela
-            necessidade de não infringir os direitos de outras pessoas ou o
-            direito de propriedade.
-            <br />
-            Por que foi criado? O direito à liberdade foi criado principalmente
-            como uma resposta aos horrores da Segunda Guerra Mundial, com o
-            objetivo de proteger a dignidade humana e estabelecer um consenso
-            universal sobre o valor inalienável da vida e da liberdade de todos
-            os indivíduos. A Declaração Universal dos Direitos Humanos, adotada
-            em 1948 pela ONU, foi um marco fundamental que consagrou a liberdade
-            como um direito fundamental e um pilar para a paz e a justiça. A
-            criação desse direito também visa limitar o poder do Estado sobre o
-            indivíduo, garantindo que as pessoas possam viver, se expressar e
-            agir livremente, desde que respeitem os direitos dos outros.
-          </p>
-        </div>
-      </section>
+        <section id="s3">
+          <h2>sessao 3</h2>
+        </section>
 
-      <section className={style.s3} id="s3">
-        <div>
-          <h2>Igualdade</h2>
+        <section id="s5" className={style.s5}>
+          <h3>Praias 🏖️</h3>
+          <h2> Pontal do parana </h2>
           <p>
-            "À igualdade" refere-se ao princípio de tratar todos de forma igual
-            perante a lei e a sociedade, garantindo os mesmos direitos e
-            deveres. No entanto, para que essa igualdade se concretize, o
-            tratamento não pode ser sempre o mesmo; é necessário considerar as
-            desigualdades existentes para garantir a igualdade material. Isso
-            significa tratar "os iguais de forma igual e os desiguais de forma
-            desigual, na medida de sua desigualdade", como afirmado por Rui
-            Barbosa e previsto na Constituição, exigindo ações que promovam a
-            equidade, como as ações afirmativas.
-            <br />O conceito de igualdade foi desenvolvido e formalizado para
-            estabelecer a justiça social, garantir que todos os seres humanos
-            tenham o mesmo status social e oportunidades, e combater privilégios
-            e opressões baseados em diferenças infundadas.
+            É uma praia muito tranquila não tem muitas ondas e é perfeita para
+            relaxar.Nesta praia você não precisa ficar se preucupando com as
+            pessoas porque é estremamente vazia KK. Recomendo muito esta praia
+            se você quer descansar da correria da cidade.
           </p>
-        </div>
+          <h2> Guarda do Embau </h2>
+          <p>
+            Esta praia é simpesmente encantadora. Ela tem trilhas que te levam
+            ao topo de uma "pequena" montanha e la de cima é possivel ver a
+            praia toda e, dependendo da epoca que você for, é possivel avistar
+            baleias! A praia é limpa e organizada tem quadras com rede que podem
+            ser utilizadas para diversas brincadeiras e esportes. É perfeita
+            para ir com os amigos e familia.
+          </p>
 
-        <div>
-          <h2>Segurança pessoal</h2>
+          <h2> Praia do Forte</h2>
           <p>
-            A segurança pessoal é um conjunto de medidas preventivas e reativas
-            para proteger a integridade física, mental e moral de um indivíduo,
-            incluindo o seu patrimônio. Ela pode ser realizada tanto por meio de
-            ações individuais, como estar atento ao ambiente e evitar locais
-            perigosos, quanto pela contratação de serviços profissionais para
-            acompanhamento, proteção e vigilância
-            <br />
-            Por que foi criado? A segurança pessoal foi criada com o objetivo
-            principal de preservar a integridade física e psicológica de um
-            indivíduo, minimizando riscos e ameaças à sua vida, liberdade e
-            privacidade. O conceito é um direito humano fundamental, consagrado
-            em documentos como a Declaração Universal dos Direitos Humanos, que
-            estabelece que todo ser humano tem direito à vida, à liberdade e à
-            segurança pessoal.
+            Esta praia é localizada onde antes era um grande Forte e protegia
+            aquela região, inclusive tem museu que pode ser visitado, a historia
+            dali é estremamente interessante e a praia é linda.
           </p>
-        </div>
-      </section>
+        </section>
 
-      <section className={style.s4} id="s4">
-        <div>
-          <h2>Liberdade de expressão</h2>
-          <p>
-            A liberdade de expressão é o direito fundamental de buscar, receber
-            e difundir informações e ideias sem interferência, por qualquer
-            meio. Esse direito permite que cada pessoa se manifeste livremente,
-            expressando pensamentos, opiniões, críticas e crenças, mas também
-            implica que os indivíduos são responsáveis pelos abusos cometidos,
-            como discursos de ódio ou calúnia, que são submetidos às leis civis
-            e criminais. O direito é protegido por leis nacionais e tratados
-            internacionais, mas pode ser limitado quando entra em conflito com
-            outros direitos fundamentais ou interesses públicos.
-            <br />
-            Por que foi criado? A liberdade de expressão foi criada
-            principalmente para servir de alicerce para a democracia, permitindo
-            a participação cívica, o progresso social e o desenvolvimento
-            individual. Historicamente, essa ideia tem raízes na Grécia Antiga,
-            com os filósofos que defendiam a liberdade de opinião, e foi
-            consolidada no Iluminismo com o surgimento de constituições modernas
-            e documentos como a Primeira Emenda da Constituição dos EUA e a
-            Declaração dos Direitos do Homem e do Cidadão, que a estabeleceram
-            como um direito fundamental e inalienável.
-          </p>
-        </div>
-
-        <div>
-          <img className={style.img} src={foto} alt="Representação" />
-        </div>
-      </section>
-      <section className={style.s5} id="s5">
-        <div>
-          <h2>Liberdade de trabalho</h2>
-          <p>
-            Liberdade de trabalho é o direito de escolher livremente uma
-            profissão ou ofício, sem coerção, garantido pela Constituição
-            Federal do Brasil (Art. 5º, XIII) e pela legislação. Esse direito é
-            limitado apenas por qualificações exigidas por lei e pelo interesse
-            coletivo, e não permite condições análogas à escravidão. É um
-            princípio fundamental do Direito do Trabalho, que visa à dignidade
-            humana e à justiça social.
-            <br />
-            por que foi criado? A liberdade de trabalho foi estabelecida como um
-            direito humano e civil fundamental para garantir a autonomia
-            individual, combater a exploração e promover a justiça social e o
-            desenvolvimento econômico. Embora a regra seja a liberdade, o
-            exercício de certas profissões é condicionado a qualificações legais
-            para garantir a segurança e o bem-estar da sociedade.
-          </p>
-        </div>
-
-        <div>
-          <h2>Direitos Humanos</h2>
-          <p>
-            O direito humano à educação é um direito fundamental previsto em
-            artigos internacionais, como o Artigo 26 da Declaração Universal dos
-            Direitos Humanos, e na legislação brasileira, como o Artigo 205 da
-            Constituição Federal. Este artigo afirma que a educação é um direito
-            de todos e um dever do Estado e da família, com o objetivo de
-            promover o pleno desenvolvimento da pessoa e a cidadania. A educação
-            em direitos humanos (EDH) é entendida como uma forma de garantir e
-            consolidar esse direito, promovendo uma cultura de respeito,
-            igualdade e dignidade humana, conforme estabelecido em marcos como a
-            BNCC e o Plano Nacional de Educação em Direitos Humanos.
-            <br />O direito humano à educação foi criado e reconhecido
-            internacionalmente no contexto do pós-Segunda Guerra Mundial, a
-            partir de um esforço da Organização das Nações Unidas (ONU) para
-            promover a paz, reduzir desigualdades e prevenir futuras
-            atrocidades.
-          </p>
-        </div>
-      </section>
+        <section id="s4" className={style.s4}>
+          <h2>CONTATO</h2>
+          <div className={style.formData}>
+            <label htmlFor="name">Informe seu nome</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="email">Informe seu email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="message">Informe sua mensagem</label>
+            <textarea
+              name="message"
+              id="message"
+              value={formData.message}
+              onChange={handleChange}
+              cols="30"
+              rows="10"
+              required
+            />
+            <button onClick={handleZap}>Enviar mensagem</button>
+          </div>
+        </section>
+      </main>
+      <footer className={style.rodape}>
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {" "}
+          <img width={80} src={FacebookIcon} alt="Facebook" />{" "}
+        </a>
+        <a
+          href="https://www.instagram.com/laiss.secrets/following/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {" "}
+          <img width={80} src={InstagramIcon} alt="Instagram" />{" "}
+        </a>
+        <a
+          href="https://www.linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {" "}
+          <img width={80} src={linkedinIcon} alt="Linkedin" />{" "}
+        </a>
+        <a
+          href="https://www.whatsapp.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {" "}
+          <img width={80} src={whastsappIcon} alt="WhastsApp" />{" "}
+        </a>
+      </footer>
     </>
   );
 }
